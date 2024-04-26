@@ -7,6 +7,7 @@
   "scripts": {
     "install": "yarn install",
     "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
     "deploy-littlefs": "tsc && vite build  --base=/apps/myhelloiot/ --emptyOutDir --outDir ../../data/apps/myhelloiot",
