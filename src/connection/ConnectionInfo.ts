@@ -43,7 +43,7 @@ export type ConnectInfo = {
 
 export const defaultConnectInfo: ConnectInfo = {
   clientId: "",
-  url: "ws://localhost:1884",
+  url: "ws://broker.local:81",
   keepalive: 60,
   protocolVersion: 4,
   clean: true,
