@@ -1,6 +1,6 @@
 # MYHELLOIOT
 
-MYHELLOIOT is a [MQTT](https://en.wikipedia.org/wiki/MQTT) dashboard application inspired in my other MQTT project [HelloIoT](https://github.com/adrianromero/helloiot)
+MYHELLOIOT is a [MQTT](https://en.wikipedia.org/wiki/MQTT) dashboard application inspired in my other MQTT project [HelloIoT](https://github.com/mhaberler/helloiot)
 You can use MYHELLOIOT as a MQTT client application to publish and subscribe to topics or you can use MYHELLOIOT as a client platform to create your own dashboard. MYHELLOIOT is a [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) application and it can run on your favorite browser or installed on Windows, MacOS, Linux, and even in mobile devices iOS or Android.
 
 ![Screenshot](./src/assets/myhelloiot.png)
