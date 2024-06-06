@@ -16,7 +16,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { FileInfo } from "./UploadRaw";
-import basicsampledata from "./sampledata/basicsampledata";
+import balloonsampledata from "./sampledata/balloonsampledata";
+// import basicsampledata from "./sampledata/basicsampledata";
 import { cyrb53str } from "../CryptFunctions";
 import type { QoS, IConnectPacket } from "mqtt-packet";
 
@@ -39,7 +40,7 @@ export type ConnectInfo = {
 
 export const defaultConnectInfo: ConnectInfo = {
   clientId: "",
-  url: "wss://mymqttbroker",
+  url: "ws://sensorbox.local:81",
   keepalive: 60,
   protocolVersion: 4,
   clean: true,
@@ -51,9 +52,9 @@ export const defaultConnectInfo: ConnectInfo = {
   willretain: false,
   willpayload: "",
   dashboard: {
-    name: "basic.jsx",
+    name: "balloon.jsx",
     type: "text/jsx",
-    data: basicsampledata,
+    data: balloonsampledata,
   },
   dashboardcss: {
     name: "dashboard.css",

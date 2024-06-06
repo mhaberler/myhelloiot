@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    compression({ include: /\.js$/i, deleteOriginalAssets: true }),
+    compression({ include: /\.js$/i, algorithm: 'brotliCompress', deleteOriginalAssets: true }),
     VitePWA({
       workbox: {
         globPatterns: [

@@ -47,7 +47,7 @@ const ContentConnectAbout: React.FC<{
   return (
     <>
       <Link
-        href="https://github.com/adrianromero/myhelloiot"
+        href="https://github.com/mhaberler/myhelloiot"
         target="_blank"
         style={{
           position: "absolute",
@@ -76,7 +76,7 @@ const ContentConnectAbout: React.FC<{
             MQTT
           </Link>{" "}
           dashboard application inspired in my other MQTT project{" "}
-          <Link href="https://github.com/adrianromero/helloiot" target="_blank">
+          <Link href="https://github.com/mhaberler/helloiot" target="_blank">
             HelloIoT
           </Link>
           . You can use MYHELLOIOT as a MQTT client application to publish and
