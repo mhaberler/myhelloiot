@@ -17,6 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { FileInfo } from "./UploadRaw";
 import balloonsampledata from "./sampledata/balloonsampledata";
+// import tankmonitorsampledata from "./sampledata/tankmonitorsampledata";
+
+
 // import basicsampledata from "./sampledata/basicsampledata";
 import { cyrb53str } from "../CryptFunctions";
 import type { QoS, IConnectPacket } from "mqtt-packet";
@@ -52,7 +55,7 @@ export const defaultConnectInfo: ConnectInfo = {
   willretain: false,
   willpayload: "",
   dashboard: {
-    name: "balloon.jsx",
+    name: "dashboard.jsx",
     type: "text/jsx",
     data: balloonsampledata,
   },

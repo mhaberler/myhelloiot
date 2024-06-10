@@ -32,6 +32,10 @@ import inputtextsampledata from "./sampledata/inputtextsampledata";
 import lightssampledata from "./sampledata/lightssampledata";
 import gaugessampledata from "./sampledata/gaugessampledata";
 import mosquittosampledata from "./sampledata/mosquittosampledata";
+
+import balloonsampledata from  "./sampledata/balloonsampledata";
+import tankmonitorsampledata from  "./sampledata/tankmonitorsampledata";
+
 import GitHubRibbon from "../assets/svg/github.svg?react";
 import { ConnectInfoForm } from "./ConnectInfoForm";
 import { VERSION } from "../version";
@@ -285,6 +289,7 @@ const ContentConnectAbout: React.FC<{
               </Button>
               .
             </li>
+
             <li>
               Mosquitto SYS topics example
               <Button
@@ -306,6 +311,52 @@ const ContentConnectAbout: React.FC<{
               </Button>
               .
             </li>
+
+            <li>
+              Ballooning tank monitor example
+              <Button
+                type="link"
+                size="small"
+                icon={<SVGIcon icon={faPencil} />}
+                onClick={() => {
+                  message.info("dashboard: tankmonitor.jsx");
+                  form.setFieldsValue({
+                    dashboard: {
+                      name: "tankmonitor.jsx",
+                      type: "text/jsx",
+                      data: tankmonitorsampledata,
+                    },
+                  });
+                }}
+              >
+                Sets tankmonitor.jsx dashboard
+              </Button>
+              .
+            </li>
+
+            <li>
+              Ballooning advanced example
+              <Button
+                type="link"
+                size="small"
+                icon={<SVGIcon icon={faPencil} />}
+                onClick={() => {
+                  message.info("dashboard: ballloon.jsx");
+                  form.setFieldsValue({
+                    dashboard: {
+                      name: "ballloon.jsx",
+                      type: "text/jsx",
+                      data: balloonsampledata,
+                    },
+                  });
+                }}
+              >
+                Sets ballloon.jsx dashboard
+              </Button>
+              .
+            </li>
+
+
           </ul>
         </Paragraph>
         <Title level={4}>Connect</Title>
