@@ -1,6 +1,8 @@
 {
-  "clientId": "",
-  "url": "ws://localhost:9001",
+  "clientId": "kubicek",
+  "url": "ws://sensorbox.local:81",
+  "username" : "",
+  "password" : "",
   "keepalive": 60,
   "protocolVersion": 4,
   "clean": true,

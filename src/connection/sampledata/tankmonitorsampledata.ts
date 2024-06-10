@@ -15,41 +15,34 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const balloonsampledata = `{/* Balloon  example. 
-*/ }
+const tankmonitorsampledata = `{/* Tank monitor  example. */ }
 
-<DashboardPage title="Balloon status">
+<DashboardPage title="Tank status">
 
-    <Card title="Baro">
-        <ViewCard
-            title="vertical speed"
-            topic="baro/0"
-            subconvert={JSONConvert(value => +(value["verticalSpeedKF"] * 5).toFixed(2))}
-            format={FuelIconFormat({
-                title: "m/s",
-                min: -5.0,
-                max: 5.0,
-                startangle: 135,
-                endangle: 405,
-                labelstep: 0.5,
-                step: 1
-            })}
-        />
-        <ViewCard
-            title="Altitude"
-            topic="baro/0"
-            subconvert={JSONConvert(value => +value["altitude"].toFixed(1))}
-            format={
-                NumberIconValueFormat({
-                    style: "unit",
-                    unit: "meter",
-                    maximumFractionDigits: 1,
-                    minimumFractionDigits: 0,
-                })
-            }
-        />
+
+    <Card title="Tanks">
+
+    <ViewUnit
+        title="Tank1"
+        className="FOOO"
+        topic="ble/d82cc3c65d32"
+        subconvert={JSONConvert(value => value["level"])}
+        format={ProgressIconFormat({
+            title: "level",
+            ...Percent(),
+            step: 2
+        })}
+    />
+    <ViewUnit
+        title="Tank2"
+        topic="ble/f8eecc42af8d"
+        subconvert={JSONConvert(value => value["level"])}
+        format={ProgressIconFormat({
+            title: "level",
+            ...Percent(),
+        })}
+    />
     </Card>
-
     <Card title="Envelope & OAT">
         <ViewUnit
             subtopic="ble/e691df7be54d"
@@ -89,29 +82,9 @@ const balloonsampledata = `{/* Balloon  example.
         />
     </Card>
 
-    {/* <Card title="Tanks"> */}
-    <Card title="Tanks">
+    <Card title="Sensor status">
 
-        <ViewUnit
-            title="Tank1"
-            className="FOOO"
-            topic="ble/d82cc3c65d32"
-            subconvert={JSONConvert(value => value["level"])}
-            format={ProgressIconFormat({
-                title: "level",
-                ...Percent(),
-                step: 2
-            })}
-        />
-        <ViewUnit
-            title="Tank2"
-            topic="ble/f8eecc42af8d"
-            subconvert={JSONConvert(value => value["level"])}
-            format={ProgressIconFormat({
-                title: "level",
-                ...Percent(),
-            })}
-        />
+        {/* for core2 etc with battery
         <ViewCard
             title="Battery"
             topic="system/battery"
@@ -121,6 +94,7 @@ const balloonsampledata = `{/* Balloon  example.
                 ...Percent()
             })}
         />
+        */}
         <ViewUnit
             subtopic="ble/e691df7be54d"
             subconvert={JSONConvert(value => value["batt"])}
@@ -146,4 +120,4 @@ const balloonsampledata = `{/* Balloon  example.
 
 `;
 
-export default balloonsampledata;
+export default tankmonitorsampledata;
