@@ -58,6 +58,8 @@ import KeypadUnit from "./units/KeypadUnit";
 import DisconnectUnit from "./units/DisconnectUnit";
 import SoundAlarmUnit from "./units/SoundAlarmUnit";
 import ModalUnit from "./units/ModalUnit";
+
+import UplotUnit from "./units/UplotUnit";
 import {
   ToIconFormat,
   ToIconValueFormat,
@@ -155,6 +157,7 @@ const JSXCONTEXT = {
   DisconnectUnit,
   SoundAlarmUnit,
   ModalUnit,
+  UplotUnit,
 
   // Icons
   faUpload,
