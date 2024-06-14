@@ -59,6 +59,7 @@ import DisconnectUnit from "./units/DisconnectUnit";
 import SoundAlarmUnit from "./units/SoundAlarmUnit";
 import ModalUnit from "./units/ModalUnit";
 
+import LeafletUnit from "./units/LeafletUnit";
 import UplotUnit from "./units/UplotUnit";
 import {
   ToIconFormat,
@@ -157,6 +158,7 @@ const JSXCONTEXT = {
   DisconnectUnit,
   SoundAlarmUnit,
   ModalUnit,
+  LeafletUnit,
   UplotUnit,
 
   // Icons
