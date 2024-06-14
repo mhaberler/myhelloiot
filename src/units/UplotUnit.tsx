@@ -2,6 +2,7 @@ import React from 'react';
 import uPlot from 'uplot';
 import UplotReact from 'uplot-react';
 import 'uplot/dist/uPlot.min.css';
+import "./UplotUnit.css";
 
 const demoData: uPlot.TypedArray[] = [
     [0, 1, 2, 3, 4, 5],
@@ -33,17 +34,13 @@ export type UplotUnitProps = {
     className?: string;
     options?: uPlot.Options,
     data?: uPlot.AlignedData,
-    //  target={target}
 };
-// {format.toIcon(buffer)}
-const UplotUnit: React.FC<UplotUnitProps> = ({
-    title = "uP",
-    className = "uplotClass",
 
+const UplotUnit: React.FC<UplotUnitProps> = ({
+    className = "myUplot",
     options = demoOptions,
     data = demoData,
 }) => {
-
     return <span className={className}>
 
         <UplotReact
@@ -57,7 +54,6 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
             }} />
 
     </span>;
-
 }
 
 export default UplotUnit;
