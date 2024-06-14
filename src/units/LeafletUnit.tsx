@@ -3,7 +3,7 @@ import { TileLayer } from 'react-leaflet/TileLayer'
 import { Marker } from 'react-leaflet/Marker'
 import { Popup } from 'react-leaflet/Popup'
 import "leaflet/dist/leaflet.css";
-
+import "./LeafletUnit.css";
 
 export type LeafletUnitProps = {
     topic?: string;
@@ -14,14 +14,13 @@ export type LeafletUnitProps = {
 const LeafletUnit: React.FC<LeafletUnitProps> = ({
     className = "myLeaflet",
 }) => {
-
     return <span className={className}>
 
         <MapContainer
             center={[47.12830680003528, 15.210969020512545]}
             zoom={13}
             scrollWheelZoom={true}
-            style={{ minHeight: "30vh", minWidth: "30vw" }}
+            style={{ minHeight: "50vh", minWidth: "30vw" }}
         >
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
