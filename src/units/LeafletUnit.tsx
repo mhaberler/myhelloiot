@@ -3,6 +3,10 @@ import { TileLayer } from 'react-leaflet/TileLayer'
 import { Marker } from 'react-leaflet/Marker'
 import { Popup } from 'react-leaflet/Popup'
 import "leaflet/dist/leaflet.css";
+// import "leaflet/dist/images/marker-icon-2x.png";
+// import "leaflet/dist/images/marker-icon.png";
+// import "leaflet/dist/images/marker-shadow.png";
+
 import "./LeafletUnit.css";
 
 export type LeafletUnitProps = {

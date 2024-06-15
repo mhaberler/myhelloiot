@@ -1,10 +1,9 @@
 import React from 'react';
-import uPlot from 'uplot';
 import UplotReact from 'uplot-react';
 import 'uplot/dist/uPlot.min.css';
 import "./UplotUnit.css";
 
-const demoData: uPlot.TypedArray[] = [
+const demoData = [
     [0, 1, 2, 3, 4, 5],
     [0, 1, 2, 3, 4, 5],
 ];
@@ -32,8 +31,10 @@ export type UplotUnitProps = {
     topic?: string;
     title?: string;
     className?: string;
-    options?: uPlot.Options,
-    data?: uPlot.AlignedData,
+    options?: any,
+    data?: any
+    // options?: uPlot.Options,
+    // data?: uPlot.AlignedData,
 };
 
 const UplotUnit: React.FC<UplotUnitProps> = ({
@@ -46,11 +47,9 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
         <UplotReact
             options={options}
             data={data}
-            onCreate={(chart: any) => {
-                console.log("onCreate");
+            onCreate={() => {
             }}
-            onDelete={(chart: any) => {
-                console.log("onDelete");
+            onDelete={() => {
             }} />
 
     </span>;
