@@ -48,6 +48,18 @@ const balloonsampledata = `{/* Balloon  example.
                 })
             }
         />
+
+            <ViewUnit
+            title="smoothing"
+                topic="preferences/baro/alpha"
+                format={Percent()}
+            />
+            <SliderUnit
+                topic="preferences/baro/alpha"
+                puboptions={{ retain: true }}
+                format={Percent()}
+            />
+
     </Card>
 
     <Card title="Envelope & OAT">
@@ -137,6 +149,21 @@ const balloonsampledata = `{/* Balloon  example.
                 ...Percent(),
             })}
         />
+
+            <Card title="Map">
+
+        <LeafletUnit
+            topic="gps/nav"
+        />
+    </Card>
+
+    <Card title="Time series">
+
+        <UplotUnit
+            topic="baro/baro-0"
+
+        />
+    </Card>
     </Card>
     {/*  </Card> */}
 
