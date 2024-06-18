@@ -61,6 +61,8 @@ import ModalUnit from "./units/ModalUnit";
 
 import LeafletUnit from "./units/LeafletUnit";
 import UplotUnit from "./units/UplotUnit";
+import CompassUnit from "./units/CompassUnit";
+
 import {
   ToIconFormat,
   ToIconValueFormat,
@@ -160,7 +162,8 @@ const JSXCONTEXT = {
   ModalUnit,
   LeafletUnit,
   UplotUnit,
-
+  CompassUnit,
+  
   // Icons
   faUpload,
   faDownload,
