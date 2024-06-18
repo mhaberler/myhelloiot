@@ -20,7 +20,8 @@ const balloonsampledata = `{/* Balloon  example.
 
 <DashboardPage title="Balloon status">
 
-    <Card title="Baro">
+    <Card title="Orientation">
+        <CompassUnit />
         <ViewCard
             title="vertical speed"
             topic="baro/0"
