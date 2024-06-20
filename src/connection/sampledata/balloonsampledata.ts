@@ -158,6 +158,7 @@ const balloonsampledata = `{/* Balloon  example.
 
         <LeafletUnit
             topic="gps/nav"
+            // subconvert={JSONConvert(value => {lat: value["lat"]; lng: value["lon"]}}
         />
     </Card>
 
