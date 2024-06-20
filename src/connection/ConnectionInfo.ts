@@ -43,7 +43,7 @@ export type ConnectInfo = {
 
 export const defaultConnectInfo: ConnectInfo = {
   clientId: "",
-  url: "ws://sensorbox.local:81",
+  url: "ws://localhost:1884",
   keepalive: 60,
   protocolVersion: 4,
   clean: true,
