@@ -29,7 +29,7 @@ interface CompassUnitPropos {
     suboptions?: IClientSubscribeOptions;
     subconvert?: ConvertBuffer;
     format?: ValueFormat;
-    duration?: number;
+    // duration?: number;
     // className?: string;
 }
 
