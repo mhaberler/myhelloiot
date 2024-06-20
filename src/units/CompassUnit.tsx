@@ -66,6 +66,7 @@ const CompassUnit: React.FC<CompassUnitPropos> = ({
 
         return directionNames[x];
     }
+    // className={`myhLogView ${className}`}
 
     return (
         <div className="center compass" >
