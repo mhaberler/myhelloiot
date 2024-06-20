@@ -13,38 +13,52 @@
  */
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { IClientSubscribeOptions } from "mqtt";
+import type { MQTTMessage } from "../mqtt/MQTTProvider";
+import { useMQTTSubscribe } from "../mqtt/MQTTHooks";
+import { ValueFormat } from "../format/FormatTypes";
+import { ConvertBuffer, IdentityConvert } from "../format/ConvertTypes";
 
 import './CompassUnit.css';
 import 'normalize.css';
 
-interface ContainerProps {
-    directionNames?: string[]
+interface CompassUnitPropos {
+    directionNames?: string[],
+    subtopic?: string;
+    suboptions?: IClientSubscribeOptions;
+    subconvert?: ConvertBuffer;
+    format?: ValueFormat;
+    duration?: number;
+    // className?: string;
 }
 
-
-const CompassUnit: React.FC<ContainerProps> = ({ directionNames = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'] }) => {
+const CompassUnit: React.FC<CompassUnitPropos> = ({
+     directionNames = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
+     subtopic = "",
+     suboptions,
+     subconvert = IdentityConvert(),
+    //  className,
+    }) => {
 
     const [compass, setCompass] = useState(0);
 
-    useEffect(() => {
-        start()
-    }, []);
-
-    const start = async () => {
-        // https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi
-        window.addEventListener("deviceorientationabsolute", onOrientationEventAbsolute, true);
-        function onOrientationEventAbsolute(event: any) {
-            const compass = Math.abs(event.alpha - 360);
-            setCompass(compass)
-        }
-    }
+    useMQTTSubscribe(
+        subtopic,
+        ({ message }: MQTTMessage) => {
+            const b = subconvert(message);
+            if (b) {
+                setCompass(b);
+            }
+        },
+        suboptions
+      );
 
     const formatDirection = (dir: number) => {
         return Number(Number(dir).toFixed(0))
     }
 
-    const directionName = (dir: any) => {
+    const directionName = (dir: number) => {
         const sections = directionNames.length
         const sect = 360 / sections
         let x = Math.floor((dir + sect / 2) / sect)

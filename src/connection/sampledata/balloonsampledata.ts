@@ -21,8 +21,11 @@ const balloonsampledata = `{/* Balloon  example.
 <DashboardPage title="Balloon status">
 
     <Card title="Orientation">
-        <CompassUnit />
-        <ViewCard
+    <CompassUnit
+        subtopic="imu/orientation"
+        subconvert={JSONConvert(value => value["hdg"])}
+    />
+    <ViewCard
             title="vertical speed"
             topic="baro/0"
             subconvert={JSONConvert(value => +(value["verticalSpeedKF"] * 5).toFixed(2))}
