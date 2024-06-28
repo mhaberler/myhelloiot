@@ -26,11 +26,25 @@ const balloonsampledata = `{/* Balloon  example.
         subconvert={JSONConvert(value => value["hdg"])}
     />
     <ViewCard
+        title="heading"
+        topic="imu/orientation"
+        subconvert={JSONConvert(value => value["hdg"])}
+        format={
+            NumberIconValueFormat({
+                style: "unit",
+                unit: "degree",
+                maximumFractionDigits: 1,
+                minimumFractionDigits: 0,
+            })
+        }
+    />
+    <ViewCard
             title="vertical speed"
             topic="baro/0"
             subconvert={JSONConvert(value => +(value["verticalSpeedKF"] * 5).toFixed(2))}
             format={FuelIconFormat({
-                title: "m/s",
+                style: "unit",
+                unit: "meter-per-second",
                 min: -5.0,
                 max: 5.0,
                 startangle: 135,
@@ -52,18 +66,16 @@ const balloonsampledata = `{/* Balloon  example.
                 })
             }
         />
-
-            <ViewUnit
-            title="smoothing"
-                topic="preferences/baro/alpha"
-                format={Percent()}
-            />
-            <SliderUnit
-                topic="preferences/baro/alpha"
-                puboptions={{ retain: true }}
-                format={Percent()}
-            />
-
+        <ViewUnit
+        title="smoothing"
+            topic="preferences/baro/alpha"
+            format={Percent()}
+        />
+        <SliderUnit
+            topic="preferences/baro/alpha"
+            puboptions={{ retain: true }}
+            format={Percent()}
+        />
     </Card>
 
     <Card title="Envelope & OAT">
@@ -110,7 +122,6 @@ const balloonsampledata = `{/* Balloon  example.
 
         <ViewUnit
             title="Tank1"
-            className="FOOO"
             topic="ble/d82cc3c65d32"
             subconvert={JSONConvert(value => value["level"])}
             format={ProgressIconFormat({
@@ -154,11 +165,14 @@ const balloonsampledata = `{/* Balloon  example.
             })}
         />
 
-            <Card title="Map">
+        <Card title="Map">
 
         <LeafletUnit
             topic="gps/nav"
             // subconvert={JSONConvert(value => {lat: value["lat"]; lng: value["lon"]}}
+        />
+        <NotifyUnit
+            subtopic="nfc/tag"
         />
     </Card>
 
@@ -173,9 +187,6 @@ const balloonsampledata = `{/* Balloon  example.
     {/*  </Card> */}
 
 </DashboardPage >
-
-
-
 `;
 
 export default balloonsampledata;
