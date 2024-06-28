@@ -48,9 +48,8 @@ const LeafletUnit: React.FC<LeafletUnitProps> = ({
         topic,
         ({ message }: MQTTMessage) => {
             const json = JSON.parse(message.toString("utf8"));
-            const b = { lat: json?.lat, lng: json?.lon }
-            if (b) {
-                setLocation(b)
+            if ("lat" in json && "lon" in json) {
+                setLocation({ lat: json.lat, lng: json.lon })
             }
         },
         suboptions
