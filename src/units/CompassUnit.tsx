@@ -34,25 +34,30 @@ interface CompassUnitPropos {
 }
 
 const CompassUnit: React.FC<CompassUnitPropos> = ({
-     directionNames = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
-     subtopic = "",
-     suboptions,
-     subconvert = IdentityConvert(),
+    directionNames = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
+    subtopic = "",
+    suboptions,
+    subconvert = IdentityConvert(),
     //  className,
-    }) => {
+}) => {
 
     const [compass, setCompass] = useState(0);
 
     useMQTTSubscribe(
         subtopic,
         ({ message }: MQTTMessage) => {
-            const b = subconvert(message);
-            if (b) {
-                setCompass(b);
+            try {
+                const s = subconvert(message)?.toString();
+                if (s) {
+                    setCompass(parseFloat(s));
+                }
+            }
+            catch (err) {
+                console.log(err)
             }
         },
         suboptions
-      );
+    );
 
     const formatDirection = (dir: number) => {
         return Number(Number(dir).toFixed(0))

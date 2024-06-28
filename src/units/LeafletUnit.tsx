@@ -1,13 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { MapContainer } from 'react-leaflet/MapContainer'
-import { TileLayer } from 'react-leaflet/TileLayer'
-import { Marker } from 'react-leaflet/Marker'
-import { Popup } from 'react-leaflet/Popup'
-import L from 'leaflet';
+import React, { useState } from 'react';
+import { MapContainer, TileLayer, ScaleControl, useMapEvent, Marker, Popup } from 'react-leaflet';
 
-import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import "./LeafletUnit.css";
 
@@ -23,6 +16,7 @@ export type LeafletUnitProps = {
     format?: ValueFormat;
     className?: string;
     zoom?: number;
+    zoomOnFix?: number;
     url?: string;
     attribution?: string;
 };
@@ -31,15 +25,13 @@ const LeafletUnit: React.FC<LeafletUnitProps> = ({
     topic = "",
     suboptions,
     className = "",
-    zoom=1,
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    zoom = 1,
+    zoomOnFix = 13,
+    attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 }) => {
 
     const [location, setLocation] = useState({ lat: 0, lng: 0 });
-    const [map, setMap] = useState(null);
-
-    const ref = useRef(null);
 
     useMQTTSubscribe(
         topic,
@@ -47,33 +39,39 @@ const LeafletUnit: React.FC<LeafletUnitProps> = ({
             const json = JSON.parse(message.toString("utf8"));
             const b = { lat: json?.lat, lng: json?.lon }
             if (b) {
-                console.log(b);
                 setLocation(b)
-                map.setView(b, 13)
             }
         },
         suboptions
-    );
-    return <span className={className}>
+    ); 
 
+    function ReCenter() {
+        const map = useMapEvent('click', () => {
+            map.setView(location, zoomOnFix) // map.getZoom())
+        })
+        return null
+    }
+
+    return <span className={className}>
         <MapContainer
             center={location}
             zoom={zoom}
-            scrollWheelZoom={true}
-            ref={setMap}
+            scrollWheelZoom={false}
             style={{ minHeight: "50vh", minWidth: "30vw" }}
         >
+            <ReCenter />
             <TileLayer
                 attribution={attribution}
                 url={url}
             />
+            <ScaleControl imperial={false} />
+
             <Marker position={location}>
                 <Popup>
                     A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
             </Marker>
         </MapContainer>
-
     </span>;
 
 }
