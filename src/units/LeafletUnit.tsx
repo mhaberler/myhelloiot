@@ -3,12 +3,23 @@ import { MapContainer, TileLayer, ScaleControl, useMapEvent, Marker, Popup } fro
 
 import "leaflet/dist/leaflet.css";
 import "./LeafletUnit.css";
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 import { IClientSubscribeOptions } from "mqtt";
 import type { MQTTMessage } from "../mqtt/MQTTProvider";
 import { useMQTTSubscribe } from "../mqtt/MQTTHooks";
 import { ValueFormat } from "../format/FormatTypes";
+import L from 'leaflet';
 
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconRetinaUrl: iconRetina
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export type LeafletUnitProps = {
     topic?: string;

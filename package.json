@@ -9,8 +9,8 @@
     "predeploy": "yarn build",
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
-    "littlefs": "tsc && vite build  --base=/apps/myhelloiot/ --emptyOutDir --outDir ../../data/apps/myhelloiot",
-    "deploy": "tsc &&  vite --config vite.host.ts build --base=/apps/myhelloiot/&& rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/myhelloiot/",
+    "deploy-littlefs": "tsc && vite build  --base=/apps/myhelloiot/ --emptyOutDir --outDir ../../data/apps/myhelloiot",
+    "deploy-hosted": "tsc &&  vite --config vite.host.ts build --base=/apps/myhelloiot/&& rsync -avz --delete dist/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/myhelloiot/",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite --host 0.0.0.0 preview",
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
