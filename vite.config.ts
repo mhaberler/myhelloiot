@@ -7,6 +7,16 @@ import { compression } from "vite-plugin-compression2";
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/apps/myhelloiot/",
+  // https://stackoverflow.com/questions/71255838/shorten-file-names-in-react-build-directory-to-less-than-32-chars
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: "a/[hash:10][extname]",
+        chunkFileNames: "c/[hash:10].js",
+        entryFileNames: "e/[hash:10].js"
+      }
+    }
+  },
   plugins: [
     react(),
     svgr(),
