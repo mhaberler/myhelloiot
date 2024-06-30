@@ -9,7 +9,6 @@ import { debugLog } from "../debug";
 import 'uplot/dist/uPlot.min.css';
 import "./UplotUnit.css";
 
-// type PlotValue = (number | null | undefined);
 type DataArray = (number | null | undefined)[];
 
 const demoOptions = {
@@ -40,9 +39,6 @@ export type UplotUnitProps = {
     options?: uPlot.Options,
     xaxis?: string;
     windowsize?: number,
-    // data?: any
-    // options?: uPlot.Options,
-    //  data?: uPlot.AlignedData,
 };
 
 const UplotUnit: React.FC<UplotUnitProps> = ({
@@ -52,21 +48,19 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
     xaxis = "RelativeSec",
     windowsize = 100, // Maximum number of data points in the window
     options = demoOptions,
-    className,
+    className = "",
 }) => {
-    // const [data, setData] = useState<uPlot.AlignedData>([[], [], [], [], []]);
-    const [data, setData] = useState<uPlot.AlignedData>([[]]);
-    // const [plotData, setPlotData] = useState<uPlot.AlignedData>();
-
-    let t_offset = 0;
-    let t_factor = 1;
+    const numSeries = options.series.length;
+    // @ts-expect-error
+    const [data, setData] = useState<uPlot.AlignedData>(new Array(numSeries).fill().map(() => []));
 
     // how to interpret data[0]
     //     Value  // just a value, not a timestamp
     //     Epoch  // a Unix timestamp, secs since 1-1-1970
     //     RelativeMsec // mSec since device boot
     //     RelativeSec  // seconds since device boot
-
+    let t_offset = 0;
+    let t_factor = 1;
     switch (xaxis) {
         case "Value":
             options!.scales!.x!.time = false;
@@ -95,7 +89,8 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
             const b = subconvert(message);
             if (!b)
                 return;
-            // @ts-ignore 
+
+            // @ts-expect-error
             setData(prevData => {
                 let data: DataArray = [];
                 try {
@@ -108,17 +103,16 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
                     return
                 }
                 const newData: uPlot.AlignedData = [];
-                // @ts-ignore 
+                // @ts-expect-error
                 const newX = data[0] * t_factor + t_offset;
 
                 // Keep only the latest windowsize time points
-                // @ts-ignore 
+                // @ts-expect-error
                 newData.push([...prevData[0], newX].slice(-windowsize));
 
                 for (let i = 1; i < data.length; i++) {
                     // Keep only the latest windowsize data points
-
-                    // @ts-ignore 
+                    // @ts-expect-error
                     newData.push([...prevData[i], data[i]].slice(-windowsize));
                 }
                 return newData;
@@ -128,16 +122,16 @@ const UplotUnit: React.FC<UplotUnitProps> = ({
         suboptions
     );
 
-    return <span className={className}>
+    return <span className={`myhUplotUnit ${className}`}>
 
         <UplotReact
             options={options}
             data={data}
             onCreate={(chart) => {
-                debugLog('Chart created:', chart);
+                // debugLog('Chart created:', chart);
             }}
             onDelete={(chart) => {
-                debugLog('Chart deleted:', chart);
+                // debugLog('Chart deleted:', chart);
             }} />
 
     </span>;
