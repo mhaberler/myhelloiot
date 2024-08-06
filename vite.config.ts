@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import { VitePWA } from "vite-plugin-pwa";
-import { compression } from "vite-plugin-compression2";
+// import { compression } from "vite-plugin-compression2";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    compression({ include: /\.js$/i, deleteOriginalAssets: true }),
+    // compression({ include: /\.js$/i, deleteOriginalAssets: true }),
     VitePWA({
       workbox: {
         globPatterns: [
