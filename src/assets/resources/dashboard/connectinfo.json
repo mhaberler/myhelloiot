@@ -1,8 +1,8 @@
 {
-  "clientId": "kubicek",
-  "url": "ws://sensorbox.local:81",
-  "username" : "",
-  "password" : "",
+  "clientId": "joeblow",
+  "url": "wss://sensorbox.local/mqtt",
+  "username": "",
+  "password": "",
   "keepalive": 60,
   "protocolVersion": 4,
   "clean": true,
