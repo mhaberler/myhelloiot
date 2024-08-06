@@ -43,7 +43,7 @@ export type ConnectInfo = {
 
 export const defaultConnectInfo: ConnectInfo = {
   clientId: "",
-  url: "ws://broker.local:81",
+  url: "wss://sensorbox.local/mqtt",
   keepalive: 60,
   protocolVersion: 4,
   clean: true,
