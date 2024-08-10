@@ -105,6 +105,7 @@ const MQTTApp: React.FC = () => {
             clean,
             connectTimeout,
             reconnectPeriod,
+            rejectUnauthorized: false,
             will: will ? {
               topic: willtopic,
               qos: willqos,
