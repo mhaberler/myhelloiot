@@ -51,6 +51,7 @@ import Publisher from "./units/Publisher";
 import ButtonUnit from "./units/ButtonUnit";
 import SwitchUnit from "./units/SwitchUnit";
 import ViewUnit from "./units/ViewUnit";
+import WakeLock from "./units/WakeLock";
 import SliderUnit from "./units/SliderUnit";
 import SoundUnit from "./units/SoundUnit";
 import NotifyUnit from "./units/NotifyUnit";
@@ -241,6 +242,9 @@ const JSXCONTEXT = {
     // Converters
     JSONConvert,
     Shelly2Convert,
+
+    WakeLock,
+
 };
 
 const JSXCONTEXTKEYS: string[] = [];
