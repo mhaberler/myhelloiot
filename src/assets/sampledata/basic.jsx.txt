@@ -1,6 +1,7 @@
 {/* Basic units example. */}
 
 <DashboardPage title="Basic units">
+  <WakeLock />
   <InputCard
     title="Temperature pub/sub"
     topic="myhelloiot/temperature"
